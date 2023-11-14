@@ -1,0 +1,29 @@
+<nav>
+    <ul>
+        <a href="#home"><li>Home</li></a>
+        <a href="#about"><li>About</li></a>
+    </ul>
+</nav>
+
+<div id="home" style="display: none">Home</div>
+<div id="about" style="display: none">About</div>
+
+<script>
+    document.querySelectorAll('nav a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            // Show the clicked section and hide others
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            });
+            targetElement.style.display = 'block';
+
+            // Scroll to the clicked section
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+</script>
