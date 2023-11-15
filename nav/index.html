@@ -5,19 +5,21 @@
     </ul>
 </nav>
 
-<div id="home" style="display: none">Home</div>
-<div id="about" style="display: none">About</div>
+<div class="all-pages">
+    <div id="home" style="display: none">Home</div>
+    <div id="about" style="display: none">About</div>
+</div>
 
 <script>
     document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
 
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
 
             // Show the clicked section and hide others
-            document.querySelectorAll('div').forEach(div => {
+            document.querySelectorAll('.all-pages div').forEach(div => {
                 div.style.display = 'none';
             });
             targetElement.style.display = 'block';
